@@ -1,5 +1,6 @@
 package com.example.miniCRM.entity;
 
+import com.example.miniCRM.dtos.ContatoRequestDTO;
 import com.example.miniCRM.enumeration.TipoContato;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,6 +25,11 @@ public class Contato {
     @ManyToOne
     @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente cliente;
+
+    public Contato (ContatoRequestDTO request) {
+        this.type = request.type();
+        this.valueType = request.valueType();
+    }
 
 
 }

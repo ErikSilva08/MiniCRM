@@ -1,5 +1,6 @@
 package com.example.miniCRM.entity;
 
+import com.example.miniCRM.dtos.ClienteRequestDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,4 +26,9 @@ public class Cliente {
     private String email;
     @OneToMany(mappedBy = "cliente",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Contato> contacts = new ArrayList<>();
+
+    public Cliente (ClienteRequestDTO request) {
+        this.name = request.name();
+        this.email = request.email();
+    }
 }
