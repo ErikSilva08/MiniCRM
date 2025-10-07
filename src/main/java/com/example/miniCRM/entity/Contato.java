@@ -2,6 +2,7 @@ package com.example.miniCRM.entity;
 
 import com.example.miniCRM.dtos.ContatoRequestDTO;
 import com.example.miniCRM.enumeration.TipoContato;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,6 +25,7 @@ public class Contato {
     private String valueType;
     @ManyToOne
     @JoinColumn(name = "cliente_id", nullable = false)
+    @JsonIgnore
     private Cliente cliente;
 
     public Contato (ContatoRequestDTO request) {
