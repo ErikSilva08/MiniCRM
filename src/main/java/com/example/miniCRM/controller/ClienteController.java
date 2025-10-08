@@ -37,12 +37,7 @@ public class ClienteController {
     public ResponseEntity<ContatoResponseDTO> addContatoToCliente (@PathVariable Long clienteId, @RequestBody ContatoRequestDTO request) {
         ContatoResponseDTO criatedContato = service.addContatoToCliente(clienteId,request);
 
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path("/{clienteId}")
-                .buildAndExpand(criatedContato.id())
-                .toUri();
-
-        return ResponseEntity.created(uri).body(criatedContato);
+        return ResponseEntity.status(HttpStatus.CREATED).body(criatedContato);
     }
 
 
